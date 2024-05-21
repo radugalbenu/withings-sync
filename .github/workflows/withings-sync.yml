@@ -3,6 +3,11 @@ name: Withings Sync
 on:
   schedule:
     - cron: "0 */8 * * *"
+jobs:
+  withings-to-garmin-sync:
+    name: Sync Withings data with Garmin Connect
+    runs-on: ubuntu-latest
+
 steps:
   - name: Checkout code
     uses: actions/checkout@v2
