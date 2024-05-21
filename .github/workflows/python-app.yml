@@ -1,0 +1,17 @@
+steps:
+  - name: Checkout code
+    uses: actions/checkout@v2
+
+  - name: Set up Python
+    uses: actions/setup-python@v2
+    with:
+      python-version: '3.x'
+
+  - name: Install dependencies
+    run: pip install withings-sync
+
+  - name: Run Withings Sync
+    run: |
+      withings-sync --garmin-username ${{ secrets.GARMIN_USERNAME }} \
+                    --garmin-password ${{ secrets.GARMIN_PASSWORD }} \
+                    --features BLOOD_PRESSURE --verbose
