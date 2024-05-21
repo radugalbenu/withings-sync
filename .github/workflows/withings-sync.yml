@@ -1,8 +1,8 @@
 name: Withings Sync
 
 on:
-	schedule:
-		- cron: "0 */8 * * *"
+ schedule:
+  - cron: "0 */8 * * *"
 steps:
   - name: Checkout code
     uses: actions/checkout@v2
