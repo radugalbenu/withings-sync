@@ -1,27 +1,29 @@
 name: Withings Sync
 
 on:
-	schedule:
-		- cron: "0 */8 * * *"
+  schedule:
+    - cron: "0 */8 * * *"
 
 jobs:
-	sync-withings-to-garmin:
-		name: "Sync Withings data with Garmin Connect"
-		runs-on: ubuntu-latest
-		steps:
-			- name: Checkout code
-				uses: actions/checkout@v2
+  sync-withings-to-garmin:
+    name: "Sync Withings data with Garmin Connect"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-			- name: Set up Python
-				uses: actions/setup-python@v2
-				with:
-					python-version: '3.x'
+      - name: Set up Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
 
-			- name: Install dependencies
-				run: pip install withings-sync
+      - name: Install dependencies
+        run: pip install withings-sync
 
-			- name: Run Withings Sync
-				run: |
-					withings-sync --garmin-username ${{ secrets.GARMIN_USERNAME }} \
-												--garmin-password ${{ secrets.GARMIN_PASSWORD }} \
-												--features BLOOD_PRESSURE --verbose
+      - name: Run Withings Sync
+        run: |
+          withings-sync --garmin-username ${{ secrets.GARMIN_USERNAME }} \
+            --garmin-password ${{ secrets.GARMIN_PASSWORD }} \
+            --features BLOOD_PRESSURE --verbose
+                        --garmin-password ${{ secrets.GARMIN_PASSWORD }} \
+                        --features BLOOD_PRESSURE --verbose
